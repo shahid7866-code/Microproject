@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search AR Heritage</title>
+
+   <script>
+function searchHeritage() {
+
+    let query = document.getElementById("searchInput").value
+                    .toLowerCase()
+                    .trim();
+
+    if (query === "") {
+        alert("Please enter a search term");
+        return;
+    }
+
+    // ✅ KEYWORD-BASED SEARCH LOGIC
+    if (query.includes("taj")) {
+        window.location.href = "ar_view.html";   // Taj Mahal
+    }
+    else if (query.includes("ajanta")) {
+        window.location.href = "ar_ajanta.html";
+    }
+    else if (query.includes("qutub")) {
+        window.location.href = "ar_qutub.html";
+    }
+    else {
+        alert("No heritage site found");
+    }
+}
+</script>
+
+</head>
+<body>
+
+<h2>Search Cultural Heritage</h2>
+
+<input type="text" id="searchInput" placeholder="Type Taj Mahal, Hampi, etc">
+<br><br>
+
+<button type="button" id="searchBtn">Search</button>
+
+<script>
+document.getElementById("searchBtn").addEventListener("click", function () {
+
+    let query = document.getElementById("searchInput").value
+                    .toLowerCase()
+                    .trim();
+
+    if (query === "") {
+        alert("Please enter something");
+        return;
+    }
+
+    if (query.includes("taj")) {
+        window.location.href = "ar_view.html";
+    }
+    else if (query.includes("hampi")) {
+        window.location.href = "ar_hampi.html";
+    }
+    else {
+        alert("No heritage site found");
+    }
+
+});
+</script>
+
+</body>
+
+</html>

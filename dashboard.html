@@ -1,0 +1,141 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+
+    <style>
+        /* ===== RESET & BODY ===== */
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            min-height:100vh;
+            background: radial-gradient(circle at top, #0b0f2b, #000);
+            color:white;
+            overflow:hidden;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        /* ===== COMET / RAIN EFFECT ===== */
+        .comet{
+            position:absolute;
+            top:-50px;
+            width:2px;
+            height:60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
+            animation: rain linear infinite;
+        }
+
+        @keyframes rain{
+            from{
+                transform: translateY(0) translateX(0);
+            }
+            to{
+                transform: translateY(120vh) translateX(-60px);
+            }
+        }
+
+        /* ===== DASHBOARD CARD ===== */
+        .dashboard{
+            position:relative;
+            z-index:2;
+            width:420px;
+            padding:40px;
+            background:rgba(255,255,255,0.12);
+            backdrop-filter:blur(16px);
+            border-radius:24px;
+            text-align:center;
+            box-shadow:
+                0 0 35px rgba(0,0,0,0.9),
+                inset 0 0 30px rgba(255,255,255,0.08);
+            animation: fadeUp 1.2s ease;
+        }
+
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform: translateY(30px);
+            }
+            to{
+                opacity:1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== TEXT ===== */
+        h2{
+            margin-bottom:10px;
+            letter-spacing:1px;
+        }
+
+        p{
+            font-size:14px;
+            color:#ddd;
+            margin-bottom:25px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn{
+            display:block;
+            width:100%;
+            padding:12px;
+            margin:12px 0;
+            border-radius:30px;
+            background: linear-gradient(135deg,#6fb1ff,#4da6ff);
+            color:black;
+            font-weight:bold;
+            text-decoration:none;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            transform: translateY(-3px) scale(1.04);
+            box-shadow:0 12px 30px rgba(79,166,255,0.7);
+        }
+
+        .logout{
+            background: linear-gradient(135deg,#ff8c8c,#ff4d4d);
+        }
+
+        .logout:hover{
+            box-shadow:0 12px 30px rgba(255,77,77,0.7);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- COMETS / RAIN -->
+<script>
+    for(let i=0;i<45;i++){
+        let c = document.createElement("div");
+        c.className = "comet";
+        c.style.left = Math.random()*100 + "vw";
+        c.style.animationDuration = (2 + Math.random()*4) + "s";
+        c.style.opacity = Math.random();
+        document.body.appendChild(c);
+    }
+</script>
+
+<div class="dashboard">
+    <h2>Welcome, <?php echo $_SESSION['username']; ?> 👋</h2>
+    <p>You have successfully logged in.</p>
+
+    <a href="heritage.html" class="btn">Explore Cultural Heritage</a>
+    <a href="logout.php" class="btn logout">Logout</a>
+</div>
+
+</body>
+</html>

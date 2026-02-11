@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>3D View</title>
+
+  <!-- model-viewer library -->
+  <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .viewer-box {
+      width: 90%;
+      max-width: 900px;
+      height: 80vh;
+      border-radius: 20px;
+      background: radial-gradient(circle, #111, #000);
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      padding: 10px;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="viewer-box">
+  <model-viewer
+    src="models/space.glb"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    exposure="1.2"
+    environment-image="neutral"
+    interaction-prompt="none">
+  </model-viewer>
+</div>
+
+</body>
+</html>
