@@ -5,133 +5,101 @@
     <title>Cultural Heritage</title>
 
     <style>
-/* ===== TUMBLING HEADING ===== */
-.tumble {
-    animation: tumbleFloat 6s ease-in-out infinite;
-    transform-style: preserve-3d;
-    perspective: 800px;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background: radial-gradient(circle at top, #0b0f2b, #000);
+    overflow:hidden;
 }
 
-@keyframes tumbleFloat {
-    0% {
-        transform: rotateX(0deg) rotateY(0deg) translateY(0);
-    }
-    25% {
-        transform: rotateX(8deg) rotateY(-6deg) translateY(-6px);
-    }
-    50% {
-        transform: rotateX(-8deg) rotateY(6deg) translateY(0);
-    }
-    75% {
-        transform: rotateX(6deg) rotateY(-8deg) translateY(-4px);
-    }
-    100% {
-        transform: rotateX(0deg) rotateY(0deg) translateY(0);
-    }
+/* ASTEROIDS */
+.asteroid{
+    position:absolute;
+    top:-50px;
+    width:4px;
+    height:40px;
+    background: linear-gradient(to bottom, #fff, transparent);
+    animation: fall linear infinite;
 }
 
-        /* ===== BASIC RESET ===== */
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            color:white;
-            min-height:100vh;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            background: radial-gradient(circle at top, #0b0f2b, #000);
-            overflow:hidden;
-        }
+@keyframes fall{
+    from{ transform: translateY(0); }
+    to{ transform: translateY(120vh) translateX(-80px); }
+}
 
-        /* ===== ASTEROIDS ===== */
-        .asteroid{
-            position:absolute;
-            top:-50px;
-            width:4px;
-            height:40px;
-            background: linear-gradient(to bottom, #fff, transparent);
-            opacity:0.8;
-            animation: fall linear infinite;
-        }
+h2{
+    margin-top:40px;
+    font-size:28px;
+}
 
-        @keyframes fall{
-            from{
-                transform: translateY(0) translateX(0);
-            }
-            to{
-                transform: translateY(120vh) translateX(-80px);
-            }
-        }
+/* CARDS CONTAINER */
+.cards{
+    display:flex;
+    gap:40px;
+    margin-top:50px;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    padding:20px;
+}
 
-        h2{
-            margin-top:40px;
-            letter-spacing:2px;
-            z-index:2;
-        }
+/* CARD */
+.card{
+    flex:1 1 300px;
+    max-width:350px;
+    padding:35px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(14px);
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(0,0,0,0.8);
+    transition:0.35s;
+}
 
-        .cards{
-            display:flex;
-            gap:30px;
-            margin-top:50px;
-            flex-wrap:wrap;
-            justify-content:center;
-            z-index:2;
-        }
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+}
 
-        .card{
-            width:260px;
-            padding:25px;
-            background:rgba(255,255,255,0.12);
-            backdrop-filter:blur(14px);
-            border-radius:20px;
-            text-align:center;
-            box-shadow:0 0 30px rgba(0,0,0,0.8);
-            transition:0.35s;
-        }
+/* TEXT */
+.card h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
 
-        .card:hover{
-            transform:translateY(-10px) scale(1.03);
-            box-shadow:0 20px 50px rgba(0,0,0,1);
-        }
+.card p{
+    font-size:16px;
+    margin-bottom:25px;
+}
 
-        .card h3{
-            margin-bottom:10px;
-            letter-spacing:1px;
-        }
+/* BUTTON */
+.card a{
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:25px;
+    background: linear-gradient(135deg,#6fb1ff,#4da6ff);
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:16px;
+}
 
-        .card p{
-            font-size:14px;
-            color:#ddd;
-            margin-bottom:20px;
-        }
+.card a:hover{
+    background:#1e90ff;
+}
 
-        .card a{
-            display:inline-block;
-            padding:10px 22px;
-            border-radius:25px;
-            background: linear-gradient(135deg,#6fb1ff,#4da6ff);
-            color:black;
-            text-decoration:none;
-            font-weight:bold;
-            transition:0.3s;
-        }
-
-        .card a:hover{
-            background:#1e90ff;
-        }
-
-        footer{
-            margin-top:auto;
-            width:100%;
-            padding:15px;
-            text-align:center;
-            background:rgba(0,0,0,0.45);
-            font-size:13px;
-            color:#ccc;
-            z-index:2;
-            backdrop-filter:blur(8px);
-        }
-
+/* FOOTER */
+footer{
+    margin-top:auto;
+    width:100%;
+    padding:15px;
+    text-align:center;
+    background:rgba(0,0,0,0.45);
+}
     </style>
 </head>
 
@@ -144,25 +112,35 @@
     <div class="card">
         <h3>Taj Mahal</h3>
         <p>Symbol of love and Indian heritage.</p>
-        <a href="ar_view.html">View</a>
+        <a href="ar_view.html?place=taj">View</a>
+    </div>
+
+    <div class="card">
+        <h3>Hampi</h3>
+        <p>Historic ruins of Vijayanagara Empire.</p>
+        <a href="ar_view.html?place=hampi">View</a>
+    </div>
+
+    <div class="card">
+        <h3>Museum</h3>
+        <p>Explore artifacts in 3D.</p>
+        <a href="ar_view.html?place=museum">View</a>
     </div>
 
 </div>
 
 <footer>
-    © 2026 | AR-Based Cultural Heritage Platform | Shahid Mulani
+    © 2026 | AR-Based Cultural Heritage Platform 
 </footer>
 
-<!-- ASTEROID SCRIPT -->
 <script>
-    for(let i=0;i<40;i++){
-        let a = document.createElement("div");
-        a.className = "asteroid";
-        a.style.left = Math.random()*100 + "vw";
-        a.style.animationDuration = (3 + Math.random()*5) + "s";
-        a.style.opacity = Math.random();
-        document.body.appendChild(a);
-    }
+for(let i=0;i<40;i++){
+    let a = document.createElement("div");
+    a.className = "asteroid";
+    a.style.left = Math.random()*100 + "vw";
+    a.style.animationDuration = (3 + Math.random()*5) + "s";
+    document.body.appendChild(a);
+}
 </script>
 
 </body>

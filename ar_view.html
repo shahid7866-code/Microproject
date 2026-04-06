@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>3D View</title>
 
-  <!-- model-viewer library -->
+  <!-- model-viewer -->
   <script type="module"
     src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
   </script>
@@ -34,7 +34,6 @@
     model-viewer {
       width: 100%;
       height: 100%;
-      background: transparent;
     }
   </style>
 </head>
@@ -43,15 +42,38 @@
 
 <div class="viewer-box">
   <model-viewer
-    src="models/tajmahal.glb"
+    id="viewer"
+    src=""
     camera-controls
     auto-rotate
     shadow-intensity="1"
     exposure="1.2"
-    environment-image="neutral"
-    interaction-prompt="none">
+    environment-image="neutral">
   </model-viewer>
 </div>
+
+<script>
+  // get value from URL
+  const params = new URLSearchParams(window.location.search);
+  const place = params.get("place");
+
+  let model = "";
+
+  if(place === "taj"){
+      model = "models/tajmahal.glb";
+  }
+  else if(place === "hampi"){
+      model = "models/hampi.glb";
+  }
+  else if(place === "museum"){
+      model = "models/museum.glb";
+  }
+  else{
+      model = "models/tajmahal.glb"; // default
+  }
+
+  document.getElementById("viewer").setAttribute("src", model);
+</script>
 
 </body>
 </html>

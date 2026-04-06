@@ -9,7 +9,9 @@ $sql = "INSERT INTO users (username, email, password)
         VALUES ('$username', '$email', '$password')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Registration successful";
+    // ✅ redirect instead of echo
+    header("Location: login.html");
+    exit();
 } else {
     echo "Error in registration";
 }
