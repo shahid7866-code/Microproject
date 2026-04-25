@@ -1,196 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Create Account</title>
-
-<style>
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-/* ================= LIVE WALLPAPER ================= */
-body{
-  min-height:100vh;
-  overflow:hidden;
-  font-family:"Segoe UI", Arial, sans-serif;
-  color:white;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(90,160,255,0.35), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(150,120,255,0.25), transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(50,200,255,0.25), transparent 45%),
-    linear-gradient(120deg,#020024,#090979,#000000);
-  background-size: 200% 200%;
-  animation: wallpaperMove 18s ease-in-out infinite;
-}
-
-@keyframes wallpaperMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* ================= AMBIENT WAVES ================= */
-.wave{
-  position:absolute;
-  width:120%;
-  height:120%;
-  background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
-  animation: waveFloat 25s linear infinite;
-  pointer-events:none;
-}
-
-.wave:nth-child(1){ top:-30%; left:-20%; animation-duration:30s;}
-.wave:nth-child(2){ bottom:-40%; right:-20%; animation-duration:40s;}
-
-@keyframes waveFloat{
-  from{transform:rotate(0deg);}
-  to{transform:rotate(360deg);}
-}
-
-/* ================= CENTER LAYOUT ================= */
-.main{
-  position:relative;
-  z-index:2;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* ================= GLASS CARD ================= */
-.card{
-  width:440px;
-  padding:48px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(20px);
-  border-radius:30px;
-  box-shadow:
-    0 30px 70px rgba(0,0,0,0.7),
-    inset 0 0 50px rgba(255,255,255,0.05);
-  text-align:center;
-  animation: fadeUp 1.2s ease;
-}
-
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* ================= TEXT ================= */
-.card h2{
-  font-size:32px;
-  margin-bottom:6px;
-}
-
-.card p{
-  font-size:14px;
-  color:#d6e1ff;
-  margin-bottom:30px;
-}
-
-/* ================= INPUTS ================= */
-.input{
-  text-align:left;
-  margin-bottom:20px;
-}
-
-.input label{
-  font-size:13px;
-  color:#cddcff;
-}
-
-.input input{
-  width:100%;
-  padding:14px;
-  margin-top:6px;
-  border:none;
-  outline:none;
-  border-radius:14px;
-  background:rgba(0,0,0,0.45);
-  color:white;
-  transition:0.3s;
-}
-
-.input input:focus{
-  box-shadow:0 0 18px rgba(120,180,255,0.9);
-}
-
-/* ================= BUTTON ================= */
-button{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:40px;
-  background:linear-gradient(135deg,#8fd3ff,#4da6ff);
-  color:black;
-  font-weight:bold;
-  cursor:pointer;
-  transition:0.35s;
-}
-
-button:hover{
-  transform:translateY(-4px) scale(1.03);
-  box-shadow:0 20px 45px rgba(79,163,255,0.7);
-}
-
-/* ================= FOOTER ================= */
-footer{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:16px;
-  font-size:13px;
-  color:#bcd0ff;
-  background:rgba(0,0,0,0.35);
-  backdrop-filter:blur(10px);
-}
-
-footer span{
-  color:white;
-  font-weight:600;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
+<body class="theme-body">
+    <div class="starfield" data-count="32" aria-hidden="true"></div>
 
-<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<!-- LIVE BACKGROUND LAYERS -->
-<div class="wave"></div>
-<div class="wave"></div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="heritage.html">Explore</a>
+                <a href="login.html">Login</a>
+                <a href="search_ar.html" class="nav-cta">Search</a>
+            </nav>
+        </header>
 
-<div class="main">
-  <div class="card">
-    <h2>Welcome</h2>
-    <p>Create your account and enter a living digital experience</p>
+        <main class="auth-layout">
+            <section class="panel auth-copy">
+                <div class="eyebrow">Create Account</div>
+                <h1>Join the platform and start exploring.</h1>
+                <p>
+                    Create an account to move through the project with a consistent
+                    flow from homepage to dashboard, heritage selection, search, and
+                    immersive 3D viewing.
+                </p>
 
-    <form action="register.php" method="post">
-      <div class="input">
-        <label>Username</label>
-        <input type="text" name="username" required>
-      </div>
+                <div class="mini-list">
+                    <div class="mini-item">
+                        <strong>Immersive access</strong>
+                        <span>Move from account creation into dashboard-guided heritage exploration.</span>
+                    </div>
+                    <div class="mini-item">
+                        <strong>Curated places</strong>
+                        <span>Start with the Taj Mahal, Hampi, and a museum collection experience.</span>
+                    </div>
+                    <div class="mini-item">
+                        <strong>Simple flow</strong>
+                        <span>Register once, log in quickly, and continue your cultural journey.</span>
+                    </div>
+                </div>
+            </section>
 
-      <div class="input">
-        <label>Email</label>
-        <input type="email" name="email" required>
-      </div>
+            <section class="panel form-card">
+                <div class="eyebrow">New User</div>
+                <h2>Create your account</h2>
+                <p>Fill in your details to enter the Heritage AR experience.</p>
 
-      <div class="input">
-        <label>Password</label>
-        <input type="password" name="password" required>
-      </div>
+                <form action="register.php" method="post">
+                    <div class="field">
+                        <label for="register-username">Username</label>
+                        <input id="register-username" type="text" name="username" placeholder="Choose a username" required>
+                    </div>
 
-      <button type="submit">Create Account</button>
-    </form>
-  </div>
-</div>
+                    <div class="field">
+                        <label for="register-email">Email</label>
+                        <input id="register-email" type="email" name="email" placeholder="Enter your email" required>
+                    </div>
 
-<footer>
-  © 2026 | Designed & Developed by <span></span>
-</footer>
+                    <div class="field">
+                        <label for="register-password">Password</label>
+                        <input id="register-password" type="password" name="password" placeholder="Create a password" required>
+                    </div>
 
+                    <button class="button button-primary" type="submit">Create Account</button>
+                </form>
+
+                <p class="helper-text">
+                    Already registered? <a class="inline-link" href="login.html">Sign in here</a>
+                </p>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>Styled to match the homepage experience across the project.</span>
+        </footer>
+    </div>
+
+    <script src="theme.js"></script>
 </body>
 </html>

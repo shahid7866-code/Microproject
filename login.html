@@ -1,140 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Login</title>
-
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ===== UNIVERSE BACKGROUND ===== */
-        body {
-            height: 100vh;
-            overflow: hidden;
-            background: radial-gradient(circle at top, #0a0f2c, #000000 70%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
-
-        /* ===== STARS ===== */
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: moveStar linear infinite;
-        }
-
-        @keyframes moveStar {
-            from { transform: translateY(100vh); }
-            to { transform: translateY(-10vh); }
-        }
-
-        /* ===== LOGIN BOX ===== */
-        .login-box {
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(14px);
-            padding: 30px;
-            width: 340px;
-            border-radius: 14px;
-            text-align: center;
-            box-shadow:
-                0 0 30px rgba(0,0,0,0.9),
-                0 0 40px rgba(120,100,255,0.4);
-        }
-
-        .login-box h2 {
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ===== INPUTS ===== */
-        .login-box input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            outline: none;
-            border-radius: 6px;
-            background: #0b0f2a;
-            color: white;
-        }
-
-        .login-box input:focus {
-            box-shadow: 0 0 12px #7f7cff;
-        }
-
-        /* ===== BUTTON ===== */
-        .login-box button {
-            width: 95%;
-            padding: 10px;
-            margin-top: 15px;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #7f7cff, #4da6ff);
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .login-box button:hover {
-            transform: scale(1.06);
-            box-shadow: 0 0 20px rgba(127,124,255,0.9);
-        }
-
-        /* ===== LINK ===== */
-        .login-box a {
-            color: #7f7cff;
-            text-decoration: none;
-        }
-
-        .login-box a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
+<body class="theme-body">
+    <div class="starfield" data-count="30" aria-hidden="true"></div>
 
-<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<!-- STARS GENERATOR -->
-<script>
-    for (let i = 0; i < 80; i++) {
-        let star = document.createElement("div");
-        star.className = "star";
-        star.style.left = Math.random() * 100 + "vw";
-        star.style.animationDuration = (5 + Math.random() * 10) + "s";
-        star.style.opacity = Math.random();
-        document.body.appendChild(star);
-    }
-</script>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="heritage.html">Explore</a>
+                <a href="register.html">Register</a>
+                <a href="search_ar.html" class="nav-cta">Search</a>
+            </nav>
+        </header>
 
-<div class="login-box">
-    <h2>User Login</h2>
+        <main class="auth-layout">
+            <section class="panel auth-copy">
+                <div class="eyebrow">Welcome Back</div>
+                <h1>Return to your cultural journey.</h1>
+                <p>
+                    Sign in to continue exploring immersive heritage spaces, launch
+                    3D monument views, and move smoothly between discovery, search,
+                    and your personal dashboard.
+                </p>
 
-    <form action="login.php" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
+                <div class="stat-grid">
+                    <div class="stat">
+                        <strong>3</strong>
+                        <span>featured heritage environments ready for browsing</span>
+                    </div>
+                    <div class="stat">
+                        <strong>1</strong>
+                        <span>simple login point into the rest of the platform</span>
+                    </div>
+                    <div class="stat">
+                        <strong>AR</strong>
+                        <span>immersive storytelling designed around cultural access</span>
+                    </div>
+                </div>
+            </section>
 
-    <p style="margin-top:15px;">
-        New user? <a href="register.html">Register here</a>
-    </p>
-</div>
+            <section class="panel form-card">
+                <div class="eyebrow">User Login</div>
+                <h2>Sign in to continue</h2>
+                <p>Use your registered account to open the dashboard and explore the available heritage scenes.</p>
 
+                <form action="login.php" method="post">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" name="username" placeholder="Enter your username" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <button class="button button-primary" type="submit">Login</button>
+                </form>
+
+                <p class="helper-text">
+                    New here? <a class="inline-link" href="register.html">Create an account</a>
+                </p>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>Unified immersive interface for cultural discovery.</span>
+        </footer>
+    </div>
+
+    <script src="theme.js"></script>
 </body>
 </html>

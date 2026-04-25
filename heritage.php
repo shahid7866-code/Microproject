@@ -1,111 +1,129 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.html");
+    exit();
+}
+
+$username = htmlspecialchars($_SESSION['username']);
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cultural Heritage</title>
-
-    <style>
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(120deg,#0f2027,#203a43,#2c5364);
-            color:white;
-            min-height:100vh;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-        }
-
-        h2{
-            margin-top:40px;
-            letter-spacing:1px;
-        }
-
-        .cards{
-            display:flex;
-            gap:30px;
-            margin-top:50px;
-            flex-wrap:wrap;
-            justify-content:center;
-        }
-
-        .card{
-            width:260px;
-            padding:25px;
-            background:rgba(255,255,255,0.12);
-            backdrop-filter:blur(12px);
-            border-radius:18px;
-            text-align:center;
-            box-shadow:0 0 25px rgba(0,0,0,0.6);
-            transition:0.3s;
-        }
-
-        .card:hover{
-            transform:translateY(-8px);
-            box-shadow:0 15px 40px rgba(0,0,0,0.9);
-        }
-
-        .card h3{
-            margin-bottom:10px;
-        }
-
-        .card p{
-            font-size:14px;
-            color:#ddd;
-            margin-bottom:20px;
-        }
-
-        .card a{
-            display:inline-block;
-            padding:10px 20px;
-            border-radius:20px;
-            background:#4da6ff;
-            color:black;
-            text-decoration:none;
-            font-weight:bold;
-        }
-
-        footer{
-            margin-top:auto;
-            width:100%;
-            padding:15px;
-            text-align:center;
-            background:rgba(0,0,0,0.35);
-            font-size:13px;
-            color:#ccc;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Heritage | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
+<body class="theme-body">
+    <div class="starfield" data-count="36" aria-hidden="true"></div>
 
-<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<h2>Select a Cultural Heritage Site</h2>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="search_ar.html">Search</a>
+                <a href="dashboard.php">Dashboard</a>
+                <a href="logout.php" class="nav-cta">Logout</a>
+            </nav>
+        </header>
 
-<div class="cards">
+        <main>
+            <section class="page-hero">
+                <div class="panel page-intro">
+                    <div class="eyebrow">Explore Heritage</div>
+                    <h1>Choose a heritage world, <?php echo $username; ?>.</h1>
+                    <p>
+                        This page is now part of the protected flow, so only logged-in users
+                        can continue from here into the 3D heritage models.
+                    </p>
 
-    <div class="card">
-        <h3>Taj Mahal</h3>
-        <p>Symbol of love and Indian heritage.</p>
-        <a href="ar_view.html">view</a>
+                    <div class="actions">
+                        <a class="button button-primary" href="dashboard.php">Back to Dashboard</a>
+                        <a class="button button-secondary" href="search_ar.html">Search Heritage</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Available Spaces</div>
+                        <h2>Current heritage destinations</h2>
+                    </div>
+                    <p>
+                        Open the currently available 3D destinations and continue exploring
+                        with the same theme you see on the homepage.
+                    </p>
+                </div>
+
+                <div class="grid card-grid-3">
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Monument</span>
+                            <span class="meta">Featured View</span>
+                        </div>
+                        <h3>Taj Mahal</h3>
+                        <p>
+                            Explore one of India's most recognized landmarks through a
+                            browser-based 3D experience designed for quick access and visual engagement.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=taj">Open 3D View</a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Historic Ruins</span>
+                            <span class="meta">Immersive Scene</span>
+                        </div>
+                        <h3>Hampi</h3>
+                        <p>
+                            Step into the historic remains of the Vijayanagara Empire and
+                            use the viewer to examine a more immersive cultural landscape.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=hampi">Open 3D View</a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Collection Space</span>
+                            <span class="meta">Artifact Preview</span>
+                        </div>
+                        <h3>Museum</h3>
+                        <p>
+                            View artifacts in a digital museum environment that brings a
+                            more curated, exhibit-style feel to the project experience.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=museum">Open 3D View</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>PHP heritage page aligned with the homepage theme.</span>
+        </footer>
     </div>
 
-    <div class="card">
-        <h3>Ajanta Caves</h3>
-        <p>Ancient rock-cut Buddhist caves.</p>
-        <a href="ar_view.html">view</a>
-    </div>
-
-    <div class="card">
-        <h3>Qutub Minar</h3>
-        <p>Historic victory tower of Delhi.</p>
-        <a href="ar_view.html">view</a>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 | AR-Based Cultural Heritage Platform | Shahid Mulani
-</footer>
-
+    <script src="theme.js"></script>
 </body>
 </html>

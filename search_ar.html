@@ -1,71 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Search AR Heritage</title>
-
-   <script>
-function searchHeritage() {
-
-    let query = document.getElementById("searchInput").value
-                    .toLowerCase()
-                    .trim();
-
-    if (query === "") {
-        alert("Please enter a search term");
-        return;
-    }
-
-    // ✅ KEYWORD-BASED SEARCH LOGIC
-    if (query.includes("taj")) {
-        window.location.href = "ar_view.html";   // Taj Mahal
-    }
-    else if (query.includes("ajanta")) {
-        window.location.href = "ar_ajanta.html";
-    }
-    else if (query.includes("qutub")) {
-        window.location.href = "ar_qutub.html";
-    }
-    else {
-        alert("No heritage site found");
-    }
-}
-</script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Heritage | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
-<body>
+<body class="theme-body">
+    <div class="starfield" data-count="34" aria-hidden="true"></div>
 
-<h2>Search Cultural Heritage</h2>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<input type="text" id="searchInput" placeholder="Type Taj Mahal, Hampi, etc">
-<br><br>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="heritage.html">Explore</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-cta">Register</a>
+            </nav>
+        </header>
 
-<button type="button" id="searchBtn">Search</button>
+        <main class="search-layout">
+            <section class="panel search-card">
+                <div class="eyebrow">Search Heritage</div>
+                <h1>Find a heritage experience quickly.</h1>
+                <p class="lead">
+                    Search the currently available destinations in the project and jump
+                    directly into the matching 3D view.
+                </p>
 
-<script>
-document.getElementById("searchBtn").addEventListener("click", function () {
+                <div class="search-box">
+                    <input id="searchInput" class="search-input" type="text" placeholder="Try Taj Mahal, Hampi, or Museum">
+                    <button id="searchBtn" class="button button-primary" type="button">Search</button>
+                </div>
 
-    let query = document.getElementById("searchInput").value
-                    .toLowerCase()
-                    .trim();
+                <div class="pill-list">
+                    <button class="pill" type="button" data-place="taj">Taj Mahal</button>
+                    <button class="pill" type="button" data-place="hampi">Hampi</button>
+                    <button class="pill" type="button" data-place="museum">Museum</button>
+                </div>
 
-    if (query === "") {
-        alert("Please enter something");
-        return;
-    }
+                <div id="statusMessage" class="status-message"></div>
 
-    if (query.includes("taj")) {
-        window.location.href = "ar_view.html";
-    }
-    else if (query.includes("hampi")) {
-        window.location.href = "ar_hampi.html";
-    }
-    else {
-        alert("No heritage site found");
-    }
+                <div class="notice">
+                    Available search targets are currently limited to the models already
+                    present in this project: Taj Mahal, Hampi, and Museum.
+                </div>
+            </section>
+        </main>
 
-});
-</script>
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>Search now follows the same theme and the real available models.</span>
+        </footer>
+    </div>
 
+    <script src="theme.js"></script>
+    <script>
+        const places = {
+            taj: {
+                aliases: ["taj", "taj mahal"],
+                href: "ar_view.php?place=taj"
+            },
+            hampi: {
+                aliases: ["hampi"],
+                href: "ar_view.php?place=hampi"
+            },
+            museum: {
+                aliases: ["museum", "artifacts", "artifact"],
+                href: "ar_view.php?place=museum"
+            }
+        };
+
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchBtn");
+        const statusMessage = document.getElementById("statusMessage");
+
+        function resolvePlace(query) {
+            const normalized = query.toLowerCase().trim();
+
+            if (!normalized) {
+                return null;
+            }
+
+            return Object.keys(places).find((key) => {
+                return places[key].aliases.some((alias) => normalized.includes(alias));
+            }) || null;
+        }
+
+        function searchHeritage() {
+            const match = resolvePlace(searchInput.value);
+
+            if (!searchInput.value.trim()) {
+                statusMessage.textContent = "Please enter a place name first.";
+                return;
+            }
+
+            if (!match) {
+                statusMessage.textContent = "No matching site found. Try Taj Mahal, Hampi, or Museum.";
+                return;
+            }
+
+            window.location.href = places[match].href;
+        }
+
+        searchBtn.addEventListener("click", searchHeritage);
+
+        searchInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                searchHeritage();
+            }
+        });
+
+        document.querySelectorAll("[data-place]").forEach((button) => {
+            button.addEventListener("click", () => {
+                const place = button.getAttribute("data-place");
+                window.location.href = places[place].href;
+            });
+        });
+    </script>
 </body>
-
 </html>

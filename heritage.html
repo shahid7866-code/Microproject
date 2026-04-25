@@ -1,147 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cultural Heritage</title>
-
-    <style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    color:white;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    background: radial-gradient(circle at top, #0b0f2b, #000);
-    overflow:hidden;
-}
-
-/* ASTEROIDS */
-.asteroid{
-    position:absolute;
-    top:-50px;
-    width:4px;
-    height:40px;
-    background: linear-gradient(to bottom, #fff, transparent);
-    animation: fall linear infinite;
-}
-
-@keyframes fall{
-    from{ transform: translateY(0); }
-    to{ transform: translateY(120vh) translateX(-80px); }
-}
-
-h2{
-    margin-top:40px;
-    font-size:28px;
-}
-
-/* CARDS CONTAINER */
-.cards{
-    display:flex;
-    gap:40px;
-    margin-top:50px;
-    flex-wrap:wrap;
-    justify-content:center;
-    width:100%;
-    padding:20px;
-}
-
-/* CARD */
-.card{
-    flex:1 1 300px;
-    max-width:350px;
-    padding:35px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(14px);
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 0 30px rgba(0,0,0,0.8);
-    transition:0.35s;
-}
-
-.card:hover{
-    transform:translateY(-10px) scale(1.05);
-}
-
-/* TEXT */
-.card h3{
-    font-size:22px;
-    margin-bottom:15px;
-}
-
-.card p{
-    font-size:16px;
-    margin-bottom:25px;
-}
-
-/* BUTTON */
-.card a{
-    display:inline-block;
-    padding:12px 28px;
-    border-radius:25px;
-    background: linear-gradient(135deg,#6fb1ff,#4da6ff);
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:16px;
-}
-
-.card a:hover{
-    background:#1e90ff;
-}
-
-/* FOOTER */
-footer{
-    margin-top:auto;
-    width:100%;
-    padding:15px;
-    text-align:center;
-    background:rgba(0,0,0,0.45);
-}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Heritage | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
+<body class="theme-body">
+    <div class="starfield" data-count="36" aria-hidden="true"></div>
 
-<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<h2>Select a Cultural Heritage Site</h2>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="search_ar.html">Search</a>
+                <a href="login.html">Login</a>
+                <a href="register.html" class="nav-cta">Register</a>
+            </nav>
+        </header>
 
-<div class="cards">
+        <main>
+            <section class="page-hero">
+                <div class="panel page-intro">
+                    <div class="eyebrow">Explore Heritage</div>
+                    <h1>Choose a place and enter the experience.</h1>
+                    <p>
+                        These are the currently available environments in the project.
+                        Each one opens into a themed 3D viewer that matches the homepage
+                        visual language and keeps the journey connected.
+                    </p>
 
-    <div class="card">
-        <h3>Taj Mahal</h3>
-        <p>Symbol of love and Indian heritage.</p>
-        <a href="ar_view.html?place=taj">View</a>
+                    <div class="actions">
+                        <a class="button button-primary" href="search_ar.html">Search Heritage</a>
+                        <a class="button button-secondary" href="index.html">Back Home</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Available Spaces</div>
+                        <h2>Current heritage destinations</h2>
+                    </div>
+                    <p>
+                        Start with iconic architecture, archaeological heritage, and a
+                        museum-style artifact view built into the current prototype.
+                    </p>
+                </div>
+
+                <div class="grid card-grid-3">
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Monument</span>
+                            <span class="meta">Featured View</span>
+                        </div>
+                        <h3>Taj Mahal</h3>
+                        <p>
+                            Explore one of India's most recognized landmarks through a
+                            browser-based 3D experience designed for quick access and visual engagement.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=taj">Open 3D View</a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Historic Ruins</span>
+                            <span class="meta">Immersive Scene</span>
+                        </div>
+                        <h3>Hampi</h3>
+                        <p>
+                            Step into the historic remains of the Vijayanagara Empire and
+                            use the viewer to examine a more immersive cultural landscape.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=hampi">Open 3D View</a>
+                        </div>
+                    </article>
+
+                    <article class="info-card">
+                        <div class="info-top">
+                            <span class="tag">Collection Space</span>
+                            <span class="meta">Artifact Preview</span>
+                        </div>
+                        <h3>Museum</h3>
+                        <p>
+                            View artifacts in a digital museum environment that brings a
+                            more curated, exhibit-style feel to the project experience.
+                        </p>
+                        <div class="card-actions">
+                            <a class="button button-primary" href="ar_view.php?place=museum">Open 3D View</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>Connected exploration flow from homepage to 3D viewing.</span>
+        </footer>
     </div>
 
-    <div class="card">
-        <h3>Hampi</h3>
-        <p>Historic ruins of Vijayanagara Empire.</p>
-        <a href="ar_view.html?place=hampi">View</a>
-    </div>
-
-    <div class="card">
-        <h3>Museum</h3>
-        <p>Explore artifacts in 3D.</p>
-        <a href="ar_view.html?place=museum">View</a>
-    </div>
-
-</div>
-
-<footer>
-    © 2026 | AR-Based Cultural Heritage Platform 
-</footer>
-
-<script>
-for(let i=0;i<40;i++){
-    let a = document.createElement("div");
-    a.className = "asteroid";
-    a.style.left = Math.random()*100 + "vw";
-    a.style.animationDuration = (3 + Math.random()*5) + "s";
-    document.body.appendChild(a);
-}
-</script>
-
+    <script src="theme.js"></script>
 </body>
 </html>

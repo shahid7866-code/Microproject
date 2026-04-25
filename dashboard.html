@@ -1,141 +1,85 @@
-<?php
-session_start();
-
-// Check if user is logged in
-if (!isset($_SESSION['username'])) {
-    header("Location: login.html");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User Dashboard</title>
-
-    <style>
-        /* ===== RESET & BODY ===== */
-        body{
-            margin:0;
-            font-family: Arial, sans-serif;
-            min-height:100vh;
-            background: radial-gradient(circle at top, #0b0f2b, #000);
-            color:white;
-            overflow:hidden;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-
-        /* ===== COMET / RAIN EFFECT ===== */
-        .comet{
-            position:absolute;
-            top:-50px;
-            width:2px;
-            height:60px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.9), transparent);
-            animation: rain linear infinite;
-        }
-
-        @keyframes rain{
-            from{
-                transform: translateY(0) translateX(0);
-            }
-            to{
-                transform: translateY(120vh) translateX(-60px);
-            }
-        }
-
-        /* ===== DASHBOARD CARD ===== */
-        .dashboard{
-            position:relative;
-            z-index:2;
-            width:420px;
-            padding:40px;
-            background:rgba(255,255,255,0.12);
-            backdrop-filter:blur(16px);
-            border-radius:24px;
-            text-align:center;
-            box-shadow:
-                0 0 35px rgba(0,0,0,0.9),
-                inset 0 0 30px rgba(255,255,255,0.08);
-            animation: fadeUp 1.2s ease;
-        }
-
-        @keyframes fadeUp{
-            from{
-                opacity:0;
-                transform: translateY(30px);
-            }
-            to{
-                opacity:1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== TEXT ===== */
-        h2{
-            margin-bottom:10px;
-            letter-spacing:1px;
-        }
-
-        p{
-            font-size:14px;
-            color:#ddd;
-            margin-bottom:25px;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn{
-            display:block;
-            width:100%;
-            padding:12px;
-            margin:12px 0;
-            border-radius:30px;
-            background: linear-gradient(135deg,#6fb1ff,#4da6ff);
-            color:black;
-            font-weight:bold;
-            text-decoration:none;
-            transition:0.3s;
-        }
-
-        .btn:hover{
-            transform: translateY(-3px) scale(1.04);
-            box-shadow:0 12px 30px rgba(79,166,255,0.7);
-        }
-
-        .logout{
-            background: linear-gradient(135deg,#ff8c8c,#ff4d4d);
-        }
-
-        .logout:hover{
-            box-shadow:0 12px 30px rgba(255,77,77,0.7);
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Preview | Heritage AR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css">
 </head>
+<body class="theme-body">
+    <div class="starfield" data-count="30" aria-hidden="true"></div>
 
-<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <a class="brand" href="index.html">
+                <div class="brand-mark">AR</div>
+                <div class="brand-copy">
+                    <strong>Heritage AR</strong>
+                    <span>Cultural Discovery Platform</span>
+                </div>
+            </a>
 
-<!-- COMETS / RAIN -->
-<script>
-    for(let i=0;i<45;i++){
-        let c = document.createElement("div");
-        c.className = "comet";
-        c.style.left = Math.random()*100 + "vw";
-        c.style.animationDuration = (2 + Math.random()*4) + "s";
-        c.style.opacity = Math.random();
-        document.body.appendChild(c);
-    }
-</script>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="heritage.html">Explore</a>
+                <a href="search_ar.html">Search</a>
+                <a href="login.html" class="nav-cta">Login</a>
+            </nav>
+        </header>
 
-<div class="dashboard">
-    <h2>Welcome, <?php echo $_SESSION['username']; ?> 👋</h2>
-    <p>You have successfully logged in.</p>
+        <main class="dashboard-grid">
+            <div class="panel page-intro is-full">
+                <div class="eyebrow">Dashboard Preview</div>
+                <h1>Your themed dashboard starts here.</h1>
+                <p>
+                    This page now follows the same visual system as the homepage. To use
+                    the live dashboard flow, sign in through the login page and continue to
+                    the PHP dashboard.
+                </p>
 
-    <a href="heritage.html" class="btn">Explore Cultural Heritage</a>
-    <a href="logout.php" class="btn logout">Logout</a>
-</div>
+                <div class="actions">
+                    <a class="button button-primary" href="login.html">Login</a>
+                    <a class="button button-secondary" href="register.html">Register</a>
+                    <a class="button button-secondary" href="index.html">Homepage</a>
+                </div>
+            </div>
 
+            <div class="stack">
+                <article class="info-card">
+                    <div class="info-top">
+                        <span class="tag">Theme Match</span>
+                        <span class="meta">Homepage aligned</span>
+                    </div>
+                    <h3>Consistent styling</h3>
+                    <p>
+                        Navigation, cards, buttons, colors, and the animated background now
+                        follow the same design language across the project.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="info-top">
+                        <span class="tag">Live Flow</span>
+                        <span class="meta">Login required</span>
+                    </div>
+                    <h3>Use the full dashboard</h3>
+                    <p>
+                        Sign in to continue to the active themed dashboard and explore the
+                        rest of the project from there.
+                    </p>
+                </article>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <span>&copy; 2026 Heritage AR Platform</span>
+            <span>Preview page updated to match the homepage theme.</span>
+        </footer>
+    </div>
+
+    <script src="theme.js"></script>
 </body>
 </html>
